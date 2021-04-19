@@ -3,13 +3,13 @@ package com.company;
 import java.util.Arrays;
 import java.util.Iterator;
 
-    public class MyArrayList<T> implements MyList<T>, Iterable<T> {
+    public class MyArrayList<T> implements MyList<T> {
     private Object[] arr;
     private int size;
     private int cursore;
 
     public MyArrayList() {
-        this(14);
+        this(10);
     }
 
     public MyArrayList(T[] a) {
@@ -60,7 +60,7 @@ import java.util.Iterator;
     @Override
     public void clear() {
         arr = new Object[14];
-        size = 14;
+        size = 0;
     }
 
     @Override

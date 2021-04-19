@@ -8,7 +8,7 @@ public class MyHashMap<K, V> implements MyMap<K, V> {
     private int threshold;
 
     public MyHashMap() {
-        hashTable = new Node[5];
+        hashTable = new Node[16];
         size = 0;
         instanceOfThreshold();
     }
@@ -18,7 +18,7 @@ public class MyHashMap<K, V> implements MyMap<K, V> {
     }
 
     private int hash(K key) {
-        return Objects.hashCode(key) % hashTable.length;
+        return Objects.hashCode(key) % (hashTable.length-1);
     }
 
     //    private Node<K, V> getNecessaryNode(int index) {

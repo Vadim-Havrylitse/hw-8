@@ -4,23 +4,23 @@ import java.util.Iterator;
 
 public class MyLinkedList<R> implements MyList<R> {
 
-    private Node<R> firstNoda;
-    private Node<R> lastNoda;
+    private Node<R> firstNode;
+    private Node<R> lastNode;
     private int size;
 
     public MyLinkedList() {
-        this.lastNoda = new Node<R>(null, firstNoda, null);
-        this.firstNoda = new Node<R>(null, null, lastNoda);
+        this.lastNode = new Node<R>(null, firstNode, null);
+        this.firstNode = new Node<R>(null, null, lastNode);
         this.size = 0;
     }
 
 
     public void addLast(R el) {
-        Node<R> previous = lastNoda;
+        Node<R> previous = lastNode;
         previous.element = el;
-        previous.prev = lastNoda.prev;
-        lastNoda = new Node<R>(null, previous, null);
-        previous.next = lastNoda;
+        previous.prev = lastNode.prev;
+        lastNode = new Node<R>(null, previous, null);
+        previous.next = lastNode;
         size++;
     }
 
@@ -31,7 +31,7 @@ public class MyLinkedList<R> implements MyList<R> {
     }
 
     public void addByIndex(int index, R value) {
-        Node<R> temp = firstNoda;
+        Node<R> temp = firstNode;
         for (int i = 0; i <= index; i++) {
             temp = temp.next;
             if (i == index) {
@@ -44,7 +44,7 @@ public class MyLinkedList<R> implements MyList<R> {
 
     @Override
     public void remove(int index) {
-        Node<R> temp = firstNoda.next;
+        Node<R> temp = firstNode.next;
         for (int i = 0; i < index; i++) {
             temp = temp.next;
         }
@@ -54,7 +54,7 @@ public class MyLinkedList<R> implements MyList<R> {
             size--;
         } else {
             temp.next.prev = temp.prev;
-            firstNoda.next = temp.next;
+            firstNode.next = temp.next;
             size--;
         }
 
@@ -62,8 +62,8 @@ public class MyLinkedList<R> implements MyList<R> {
 
     @Override
     public void clear() {
-        firstNoda.next = lastNoda;
-        lastNoda.prev = firstNoda;
+        firstNode.next = lastNode;
+        lastNode.prev = firstNode;
         size = 0;
 
     }
@@ -78,7 +78,7 @@ public class MyLinkedList<R> implements MyList<R> {
         if (index >= size) {
             throw new NullPointerException("This index not found!!!!");
         }
-        Node<R> temp = firstNoda.next;
+        Node<R> temp = firstNode.next;
         for (int i = 0; i < index; i++) {
             temp = temp.next;
         }
